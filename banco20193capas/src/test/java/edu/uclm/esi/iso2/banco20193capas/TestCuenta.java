@@ -8,15 +8,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import edu.uclm.esi.iso2.banco20193capas.model.Cuenta;
 import edu.uclm.esi.iso2.banco20193capas.model.Manager;
+import edu.uclm.esi.iso2.banco20193capas.exceptions.ClienteNoAutorizadoException;
+import edu.uclm.esi.iso2.banco20193capas.exceptions.ClienteNoEncontradoException;
 import edu.uclm.esi.iso2.banco20193capas.exceptions.CuentaInvalidaException;
 import edu.uclm.esi.iso2.banco20193capas.exceptions.CuentaSinTitularesException;
 import edu.uclm.esi.iso2.banco20193capas.exceptions.CuentaYaCreadaException;
 import edu.uclm.esi.iso2.banco20193capas.exceptions.ImporteInvalidoException;
 import edu.uclm.esi.iso2.banco20193capas.exceptions.PinInvalidoException;
 import edu.uclm.esi.iso2.banco20193capas.exceptions.SaldoInsuficienteException;
+import edu.uclm.esi.iso2.banco20193capas.exceptions.TokenInvalidoException;
 import edu.uclm.esi.iso2.banco20193capas.model.Cliente;
 import edu.uclm.esi.iso2.banco20193capas.model.Tarjeta;
 import edu.uclm.esi.iso2.banco20193capas.model.TarjetaCredito;
+import edu.uclm.esi.iso2.banco20193capas.model.TarjetaDebito;
 import junit.framework.TestCase;
 
 @RunWith(SpringRunner.class)
@@ -203,4 +207,52 @@ public class TestCuenta extends TestCase {
 			fail("Excepción inesperada: " + e.getMessage());
 		}
 	}
+	/*@Test
+	public void testErrorCompra() {
+		Cliente pepe = new Cliente("12345X", "Pepe", "Pérez");
+		pepe.insert();
+		Cuenta cuentaPepe = new Cuenta(1);
+		
+		try {
+			cuentaPepe.addTitular(pepe);
+		} catch (CuentaYaCreadaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			cuentaPepe.insert();
+		} catch (CuentaSinTitularesException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			cuentaPepe.ingresar(1000);
+		} catch (ImporteInvalidoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		TarjetaDebito td;
+		try {
+			td = cuentaPepe.emitirTarjetaDebito("12345X");
+			try {
+				int token=td.comprarPorInternet(td.getPin(), 100);
+				td.confirmarCompraPorInternet(token);
+			}catch(TokenInvalidoException e) {
+			}catch (Exception e) {
+				// TODO: handle exception
+			}	
+		} catch (ClienteNoEncontradoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ClienteNoAutorizadoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+			
+			
+		}*/
 }
+	
+
