@@ -74,7 +74,6 @@ public class TestCuenta extends TestCase {
 	public void testNoCreacionDeUnaCuenta() {
 		Cliente pepe = new Cliente("12345X", "Pepe", "Pérez");
 		pepe.insert();
-		
 		Cuenta cuentaPepe = new Cuenta(1);
 		
 		try {
